@@ -27,7 +27,7 @@ Build e Deploy da Demo
 
 4. Isto irá implantar o arquivo `/target/demo_cdi_tdc2014.war` no instância do servidor em execução.
  
-Accesse a aplicação
+Acesse a aplicação
 -------------------
 
 A aplicação estará sendo executada na seguinte URL: <http://localhost:8080/demo_cdi_tdc2014/>.
