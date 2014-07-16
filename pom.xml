@@ -24,9 +24,10 @@
     <version>1.0.0-SNAPSHOT</version>
     <packaging>war</packaging>
     <name>demo_cdi_tdc2014</name>
-    <description>A starter Java EE 6 webapp project for use on JBoss EAP 6, generated from the jboss-javaee6-webapp archetype</description>
+    <description>Projeto de demonstração da especificação CDI para o TDC 2014</description>
 
-    <url>http://jboss.org/jbossas</url>
+    <url>https://github.com/filipeportes/demo_cdi_tdc2014/</url>
+
     <licenses>
         <license>
             <name>Apache License, Version 2.0</name>
@@ -34,6 +35,25 @@
             <url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
         </license>
     </licenses>
+
+    <developers>
+        <developer>
+            <id>filipeportes</id>
+            <email>omeuefilipe@gmail.com</email>
+            <name>Filipe Portes</name>
+            <url>http://filipeportes.wordpress.com/</url>
+            <timezone>-3</timezone>
+        </developer>
+        <developer>
+            <id>rafabene</id>
+            <email>rafabene@gmail.com</email>
+            <name>Rafael Benevides</name>
+            <url>http://www.rafabene.com</url>
+            <organization>Red Hat</organization>
+            <organizationUrl>http://www.redhat.com</organizationUrl>
+            <timezone>-3</timezone>
+        </developer>
+    </developers>
 
     <properties>
         <!-- Explicitly declaring the source encoding eliminates the following 
@@ -58,6 +78,9 @@
         <!-- maven-compiler-plugin -->
         <maven.compiler.target>1.7</maven.compiler.target>
         <maven.compiler.source>1.7</maven.compiler.source>
+        
+        <!-- DeltaSpike version -->
+        <deltaspike.version>1.0.0</deltaspike.version>
     </properties>
 
 
@@ -84,6 +107,21 @@
                 <version>${version.jboss.bom}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+            
+            <!-- DeltaSpike Core -->
+            <dependency>
+                <groupId>org.apache.deltaspike.core</groupId>
+                <artifactId>deltaspike-core-api</artifactId>
+                <version>${deltaspike.version}</version>
+                <scope>compile</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.deltaspike.core</groupId>
+                <artifactId>deltaspike-core-impl</artifactId>
+                <version>${deltaspike.version}</version>
+                <scope>runtime</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -172,6 +210,17 @@
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-validator-annotation-processor</artifactId>
             <scope>provided</scope>
+        </dependency>
+        
+        <!-- DeltaSpike Dependencies -->
+        <dependency>
+            <groupId>org.apache.deltaspike.core</groupId>
+            <artifactId>deltaspike-core-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.deltaspike.core</groupId>
+            <artifactId>deltaspike-core-impl</artifactId>
         </dependency>
 
         <!-- Needed for running tests (you may also use TestNG) -->
