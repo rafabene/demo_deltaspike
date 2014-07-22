@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html">
+
+<!-- 
+		Replace path to template, title, header and body
+		with actual data.
+	 -->
+<ui:composition template="/template.xhtml">
+    <ui:define name="pageTitle">Criar Usuário</ui:define>
+    <ui:define name="pageHeader">Criar Usuário</ui:define>
+    <ui:define name="body">
+        <form jsfc="h:form" id="Form">
+            Usuário:
+            <h:inputText value="#{loginBean.usuario.username}" id="username" required="true" />
+            <h:message for="username" />
+            <br /> Password:
+            <h:inputSecret value="#{loginBean.usuario.password}" id="password" converter="Char[]Converter" required="true" />
+            <h:message for="password" />
+            <br /> Repetir a senha:
+            <h:inputSecret value="#{loginBean.usuario.password}" id="passwordRepeat" converter="Char[]Converter" required="true" />
+            <h:message for="passwordRepeat" />
+            <br />
+            <h:commandButton action="#{loginBean.home()}" value="Cancelar" immediate="true" />
+
+        </form>
+    </ui:define>
+</ui:composition>
+
+</html>
