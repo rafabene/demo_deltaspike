@@ -22,7 +22,7 @@
     xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee 
         http://xmlns.jcp.org/xml/ns/javaee/beans_1_1.xsd"
     bean-discovery-mode="all">
-    <alternatives>
-        <class>org.apache.deltaspike.jpa.impl.transaction.BeanManagedUserTransactionStrategy</class>
-    </alternatives>
+    <interceptors>
+        <class>org.apache.deltaspike.jpa.impl.transaction.TransactionalInterceptor</class>
+    </interceptors>
 </beans>

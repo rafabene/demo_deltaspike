@@ -3,7 +3,7 @@
     xmlns:h="http://java.sun.com/jsf/html">
 
 <head>
-<title><ui:insert name="pageTitle">Page Title</ui:insert></title>
+<title>microBlog DeltaSpike</title>
 <style type="text/css">
 body {
 	font-family: Verdana, Arial, Helvetica, sans-serif;
@@ -26,8 +26,8 @@ body {
 </head>
 
 <body bgcolor="#ffffff">
-    <table style="border: 1px solid #CAD6E0" align="center" cellpadding="0" cellspacing="0" border="0" width="80%">
-        <tbody>
+    <table style="border: 1px solid #CAD6E0;" align="center" cellpadding="0" cellspacing="0" border="0" width="80%">
+        <tbody align="left">
 
             <tr>
                 <td class="header" height="42" align="center" valign="middle" width="100%" bgcolor="#E4EBEB"><ui:insert
@@ -42,12 +42,8 @@ body {
                     <table width="100%" style="height: 150px" align="left" cellpadding="0" cellspacing="0" border="0">
                         <tbody>
                             <tr>
-                                <td align="center" width="100%" valign="middle">
-                                    <h:messages globalOnly="true" />
-                                
-                                    <ui:insert name="body">Page Body</ui:insert>
-
-                                </td>
+                                <td align="center" width="100%" valign="middle"><h:messages globalOnly="true" /> <ui:insert
+                                        name="body">Page Body</ui:insert></td>
                             </tr>
                         </tbody>
                     </table>

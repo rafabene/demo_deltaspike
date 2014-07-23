@@ -7,22 +7,27 @@
 		with actual data.
 	 -->
 <ui:composition template="/template.xhtml">
-    <ui:define name="pageTitle">Criar Usuário</ui:define>
     <ui:define name="pageHeader">Criar Usuário</ui:define>
     <ui:define name="body">
         <form jsfc="h:form" id="Form">
+            <h:panelGrid columns="3" id="RegisterGroupPanel">
             Usuário:
             <h:inputText value="#{loginBean.usuario.username}" id="username" required="true" />
-            <h:message for="username" />
-            <br /> Password:
-            <h:inputSecret value="#{loginBean.usuario.password}" id="password" converter="Char[]Converter" required="true" />
-            <h:message for="password" />
-            <br /> Repetir a senha:
-            <h:inputSecret value="#{loginBean.usuario.password}" id="passwordRepeat" converter="Char[]Converter" required="true" />
-            <h:message for="passwordRepeat" />
-            <br />
-            <h:commandButton action="#{loginBean.home()}" value="Cancelar" immediate="true" />
-
+                <h:message for="username" />
+                <br /> Password:
+            <h:inputSecret value="#{loginBean.usuario.password}" id="password" converter="Char[]Converter" required="true">
+                    <f:validator validatorId="passwordConfirmValidator" />
+                    <f:attribute name="confirmPassword" value="#{confirmPassword}" />
+                </h:inputSecret>
+                <h:message for="password" />
+                <br /> Repetir a senha:
+            <h:inputSecret id="passwordConfirm" required="true" binding="#{confirmPassword}" />
+                <h:message for="passwordConfirm" />
+            </h:panelGrid>
+            <h:commandButton action="#{loginBean.registrarUsuario()}" value="Registrar" />
+            <!-- O link abaixo poderia chamar a tela home diretamente, mas foi usado desta maneira apenas 
+            para demonstrar a funcionalidade -->
+            <h:commandButton action="#{loginBean.telaHome()}" value="Cancelar" immediate="true" />
         </form>
     </ui:define>
 </ui:composition>

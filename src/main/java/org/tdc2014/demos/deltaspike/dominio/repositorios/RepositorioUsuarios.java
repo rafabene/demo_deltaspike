@@ -7,6 +7,6 @@ import org.tdc2014.demos.deltaspike.dominio.entidades.Usuario;
 @Repository
 public interface RepositorioUsuarios extends EntityRepository<Usuario, Long> {
 
-    // O próprio nome do método criar o SQL
+    // O próprio nome do método cria o SQL
     public Usuario findByUsernameAndPassword(String username, char[] password);
 }

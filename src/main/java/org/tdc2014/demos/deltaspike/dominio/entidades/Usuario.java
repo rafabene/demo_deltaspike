@@ -10,9 +10,12 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 
 @Entity
+@Table(uniqueConstraints = { @UniqueConstraint(columnNames = { "username" }) })
 public class Usuario extends AbstractEntity<Long> {
 
     private static final long serialVersionUID = 1L;

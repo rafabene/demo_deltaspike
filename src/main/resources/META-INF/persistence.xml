@@ -19,7 +19,7 @@
     xsi:schemaLocation="
         http://java.sun.com/xml/ns/persistence
         http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
-    <persistence-unit name="primary">
+    <persistence-unit name="primary" transaction-type="JTA">
       <!-- If you are running in a production environment, add a managed 
          data source, this example data source is just for development and testing! -->
       <!-- The datasource is deployed as WEB-INF/demo_cdi_tdc2014-ds.xml, you
@@ -27,8 +27,9 @@
         <jta-data-source>java:jboss/datasources/demo_cdi_tdc2014DS</jta-data-source>
         <properties>
          <!-- Properties for Hibernate -->
-            <property name="hibernate.hbm2ddl.auto" value="create-drop" />
+            <property name="hibernate.hbm2ddl.auto" value="create" />
             <property name="hibernate.show_sql" value="true" />
+            <property name="hibernate.hbm2ddl.import_files" value="/META-INF/import.sql"/>
         </properties>
     </persistence-unit>
 </persistence>

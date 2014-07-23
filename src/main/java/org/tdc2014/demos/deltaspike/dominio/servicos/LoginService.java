@@ -1,5 +1,7 @@
 package org.tdc2014.demos.deltaspike.dominio.servicos;
 
+import java.io.Serializable;
+
 import javax.enterprise.event.Event;
 import javax.inject.Inject;
 import javax.persistence.NoResultException;
@@ -8,7 +10,9 @@ import org.apache.deltaspike.core.api.exception.control.event.ExceptionToCatchEv
 import org.tdc2014.demos.deltaspike.dominio.entidades.Usuario;
 import org.tdc2014.demos.deltaspike.dominio.repositorios.RepositorioUsuarios;
 
-public class LoginService {
+public class LoginService implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     @Inject
     private RepositorioUsuarios repositorioUsuarios;

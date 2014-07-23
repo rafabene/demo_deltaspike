@@ -124,6 +124,21 @@
                 <scope>runtime</scope>
             </dependency>
         
+            <!-- DeltaSpike Security -->
+            <dependency>
+                <groupId>org.apache.deltaspike.modules</groupId>
+                <artifactId>deltaspike-security-module-api</artifactId>
+                <version>${deltaspike.version}</version>
+                <scope>compile</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.deltaspike.modules</groupId>
+                <artifactId>deltaspike-security-module-impl</artifactId>
+                <version>${deltaspike.version}</version>
+                <scope>runtime</scope>
+            </dependency>
+
             <!-- DeltaSpike Data -->
             <dependency>
                 <groupId>org.apache.deltaspike.modules</groupId>
@@ -139,6 +154,21 @@
                 <scope>runtime</scope>
             </dependency>
             
+            <!-- DeltaSpike JPA -->
+            <dependency>
+                <groupId>org.apache.deltaspike.modules</groupId>
+                <artifactId>deltaspike-jpa-module-api</artifactId>
+                <version>${deltaspike.version}</version>
+                <scope>compile</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.deltaspike.modules</groupId>
+                <artifactId>deltaspike-jpa-module-impl</artifactId>
+                <version>${deltaspike.version}</version>
+                <scope>runtime</scope>
+            </dependency>
+
             <!-- DeltaSpike JSF -->
             <dependency>
                 <groupId>org.apache.deltaspike.modules</groupId>
@@ -153,6 +183,7 @@
                 <version>${deltaspike.version}</version>
                 <scope>runtime</scope>
             </dependency>
+
         </dependencies>
     </dependencyManagement>
 
@@ -251,6 +282,26 @@
         <dependency>
             <groupId>org.apache.deltaspike.core</groupId>
             <artifactId>deltaspike-core-impl</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.deltaspike.modules</groupId>
+            <artifactId>deltaspike-security-module-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.deltaspike.modules</groupId>
+            <artifactId>deltaspike-security-module-impl</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.deltaspike.modules</groupId>
+            <artifactId>deltaspike-jpa-module-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.deltaspike.modules</groupId>
+            <artifactId>deltaspike-jpa-module-impl</artifactId>
         </dependency>
 
         <dependency>
