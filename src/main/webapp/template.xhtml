@@ -3,8 +3,8 @@
     xmlns:h="http://java.sun.com/jsf/html">
 
 <h:head>
-<title>microBlog DeltaSpike</title>
-<style type="text/css">
+    <title>microBlog DeltaSpike</title>
+    <style type="text/css">
 body {
 	font-family: Verdana, Arial, Helvetica, sans-serif;
 	font-size: 14px;
@@ -24,13 +24,13 @@ body {
 }
 </style>
 </h:head>
-<h:panelGroup layout="block" rendered="#{applicationConfig.projectStage == 'Development'}"
-    style="background-color: red; color: white; font-size: 1.2em; text-align: center; ">
+<h:body id="body" bgcolor="#ffffff">
+    <h:panelGroup layout="block" rendered="#{applicationConfig.projectStage == 'Development'}"
+        style="background-color: red; color: white; font-size: 1.2em; text-align: center; ">
     Aplicação em desenvolvimento. Versão: ${applicationConfig.version} <br />
-    <a href="https://github.com/filipeportes/demo_cdi_tdc2014/issues">Relate algum problema</a>
-    <hr />
-</h:panelGroup>
-<body bgcolor="#ffffff">
+        <a href="https://github.com/filipeportes/demo_cdi_tdc2014/issues">Relate algum problema</a>
+        <hr />
+    </h:panelGroup>
     <h:link outcome="welcome.xhtml">
         <img src="img/logo.png" style="width: 20em; display: inline;" />
     </h:link>
@@ -49,7 +49,7 @@ body {
                     <table width="100%" style="height: 150px" align="left" cellpadding="0" cellspacing="0" border="0">
                         <tbody>
                             <tr>
-                                <td align="center" width="100%" valign="middle"><h:messages globalOnly="true" /> <ui:insert
+                                <td align="left" width="100%" valign="middle"><h:messages globalOnly="true" /> <ui:insert
                                         name="body">Page Body</ui:insert></td>
                             </tr>
                         </tbody>
@@ -66,10 +66,9 @@ body {
     <br style="clear: both; padding-bottom: 10px;" />
     <hr />
     #{screenLabelMessage.configuracoes()}:
-    <br/>
-    #{screenLabelMessage.filaJMS()}: #{applicationConfig.filaJMS} 
+    <br /> #{screenLabelMessage.filaJMS()}: #{applicationConfig.filaJMS}
 
 
-</body>
+</h:body>
 
 </html>

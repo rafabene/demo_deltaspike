@@ -3,7 +3,7 @@ package org.tdc2014.demos.deltaspike.infraestrutura.seguranca;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.faces.bean.ApplicationScoped;
+import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
 import org.apache.deltaspike.security.api.authorization.AccessDecisionVoter;

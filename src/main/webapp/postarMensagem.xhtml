@@ -11,12 +11,55 @@
     <ui:define name="body">
         <form jsfc="h:form" id="Form">
             <br style="clear: both;" />
-            <p:menu>
-                <p:submenu label="Opções">
-                    <p:menuitem value="LogOff" action="#{loginBean.logoff()}" icon="ui-icon-home" />
-                </p:submenu>
-            </p:menu>
+            <div style="display: inline-block;">
+                <p:menu>
+                    <p:submenu label="#{screenLabelMessage.opcoes()}">
+                        <p:menuitem value="#{screenLabelMessage.tarefaAdministrativa()}"
+                            action="#{adminBean.iniciarTarefaAdministrativa()}" icon="ui-icon-star" immediate="true"
+                            update="@all" />
+                        <p:menuitem value="#{screenLabelMessage.logoff()}" action="#{loginBean.logoff()}" icon="ui-icon-home"
+                            immediate="true" />
+                    </p:submenu>
+                </p:menu>
+            </div>
+            <div style="display: inline-block; width: 60%">
+                #{screenLabelMessage.mensagem()}:
+                <h:outputText id="size"
+                    value="#{empty postagemBean.postagem.mensagem?'0':postagemBean.postagem.mensagem.length()}" />
+                /100 <br />
+                <h:inputTextarea id="mensagem" value="#{postagemBean.postagem.mensagem}" cols="50" rows="2">
+                    <f:validateLength maximum="100" minimum="1" />
+                    <p:ajax event="keyup" update="size" />
+                </h:inputTextarea>
+                <br />
+                <h:message for="mensagem" />
+                <br />
+                <h:commandButton action="#{postagemBean.postarMensage()}" value="#{screenLabelMessage.postarMensagem()}" />
+                <h:commandButton action="#{adminBean.iniciarTarefaAdministrativa()}" value="#{screenLabelMessage.tarefaAdministrativa()}" />
+            </div>
         </form>
+
+        <script type="text/javascript">
+        $(document).ready(function() {  
+            $("#Form\\:mensagem").keyup(function(){  
+                //get the limit from maxlength attribute  
+                var limit = 100;
+                //get the current text inside the textarea  
+                var text = $(this).val();  
+                //count the number of characters in the text  
+                var chars = text.length;  
+                //check if there are more characters then allowed  
+                if(chars > limit){  
+                    //and if there are use substr to get the text before the limit  
+                    var new_text = text.substr(0, limit);  
+          
+                    //and change the current text with the new text  
+                    $(this).val(new_text);  
+                }  
+            });  
+          
+        });  
+        </script>
     </ui:define>
 </ui:composition>
 
