@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
     xmlns:h="http://java.sun.com/jsf/html">
 
-<head>
+<h:head>
 <title>microBlog DeltaSpike</title>
 <style type="text/css">
 body {
@@ -23,12 +23,19 @@ body {
 	color: #8E969D;
 }
 </style>
-</head>
-
+</h:head>
+<h:panelGroup layout="block" rendered="#{applicationConfig.projectStage == 'Development'}"
+    style="background-color: red; color: white; font-size: 1.2em; text-align: center; ">
+    Aplicação em desenvolvimento. Versão: ${applicationConfig.version} <br />
+    <a href="https://github.com/filipeportes/demo_cdi_tdc2014/issues">Relate algum problema</a>
+    <hr />
+</h:panelGroup>
 <body bgcolor="#ffffff">
-    <table style="border: 1px solid #CAD6E0;" align="center" cellpadding="0" cellspacing="0" border="0" width="80%">
-        <tbody align="left">
-
+    <h:link outcome="welcome.xhtml">
+        <img src="img/logo.png" style="width: 20em; display: inline;" />
+    </h:link>
+    <table style="border: 1px solid #CAD6E0;" align="right" cellpadding="0" cellspacing="0" border="0" width="60%">
+        <tbody>
             <tr>
                 <td class="header" height="42" align="center" valign="middle" width="100%" bgcolor="#E4EBEB"><ui:insert
                         name="pageHeader">Page Header</ui:insert></td>
@@ -55,6 +62,14 @@ body {
             </tr>
         </tbody>
     </table>
+
+    <br style="clear: both; padding-bottom: 10px;" />
+    <hr />
+    #{screenLabelMessage.configuracoes()}:
+    <br/>
+    #{screenLabelMessage.filaJMS()}: #{applicationConfig.filaJMS} 
+
+
 </body>
 
 </html>

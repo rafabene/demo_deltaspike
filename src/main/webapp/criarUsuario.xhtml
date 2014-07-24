@@ -11,16 +11,16 @@
     <ui:define name="body">
         <form jsfc="h:form" id="Form">
             <h:panelGrid columns="3" id="RegisterGroupPanel">
-            Usuário:
+            ${screenLabelMessage.usuario()}:
             <h:inputText value="#{loginBean.usuario.username}" id="username" required="true" />
                 <h:message for="username" />
-                <br /> Password:
+                <br /> #{screenLabelMessage.senha()}:
             <h:inputSecret value="#{loginBean.usuario.password}" id="password" converter="Char[]Converter" required="true">
                     <f:validator validatorId="passwordConfirmValidator" />
                     <f:attribute name="confirmPassword" value="#{confirmPassword}" />
                 </h:inputSecret>
                 <h:message for="password" />
-                <br /> Repetir a senha:
+                <br /> #{screenLabelMessage.confirmaSenha()}:
             <h:inputSecret id="passwordConfirm" required="true" binding="#{confirmPassword}" />
                 <h:message for="passwordConfirm" />
             </h:panelGrid>

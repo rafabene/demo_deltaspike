@@ -6,7 +6,7 @@ import org.apache.deltaspike.jsf.api.config.view.Folder;
 import org.apache.deltaspike.jsf.api.config.view.View;
 import org.apache.deltaspike.jsf.api.config.view.View.NavigationMode;
 import org.apache.deltaspike.security.api.authorization.Secured;
-import org.tdc2014.demos.deltaspike.infrastrutura.ApplicationDecisionVoter;
+import org.tdc2014.demos.deltaspike.infraestrutura.seguranca.ApplicationDecisionVoter;
 
 // A validação do caminho acontece em tempo de deploy
 @Folder(name = "/")

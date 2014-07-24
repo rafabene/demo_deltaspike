@@ -2,6 +2,7 @@ package org.tdc2014.demos.deltaspike.aplicacao;
 
 import java.io.Serializable;
 
+import javax.enterprise.context.RequestScoped;
 import javax.enterprise.event.Event;
 import javax.enterprise.inject.Produces;
 import javax.faces.application.FacesMessage;
@@ -17,9 +18,10 @@ import org.tdc2014.demos.deltaspike.aplicacao.ApplicationViewConfig.PostarMensag
 import org.tdc2014.demos.deltaspike.aplicacao.ApplicationViewConfig.Welcome;
 import org.tdc2014.demos.deltaspike.dominio.entidades.Usuario;
 import org.tdc2014.demos.deltaspike.dominio.servicos.LoginService;
-import org.tdc2014.demos.deltaspike.dominio.servicos.UsuarioJaCadastradoException;
 import org.tdc2014.demos.deltaspike.dominio.servicos.UsuarioService;
-import org.tdc2014.demos.deltaspike.infrastrutura.Logado;
+import org.tdc2014.demos.deltaspike.infraestrutura.exceptions.UsuarioJaCadastradoException;
+import org.tdc2014.demos.deltaspike.infraestrutura.i18n.ApplicationMessages;
+import org.tdc2014.demos.deltaspike.infraestrutura.seguranca.Logado;
 
 @Named
 @WindowScoped
@@ -41,10 +43,12 @@ public class LoginBean implements Serializable {
 
     @Inject
     private Event<ExceptionToCatchEvent> catchEvent;
-    
+
     @Inject
     private ViewNavigationHandler viewNavigationHandler;
 
+    @Inject
+    private ApplicationMessages applicationMessages;
 
     public Usuario getUsuario() {
         return usuario;
@@ -67,11 +71,16 @@ public class LoginBean implements Serializable {
         viewNavigationHandler.navigateTo(Welcome.class);
     }
 
+    public Class<Welcome> logoff() {
+        this.usuario = new Usuario();
+        return Welcome.class;
+    }
+
     // outcome via viewNavigation Handler
     public void registrarUsuario() {
         try {
             usuarioService.criarLogin(usuario);
-            facesContext.addMessage(null, new FacesMessage("Usuário criado com sucesso!"));
+            facesContext.addMessage(null, new FacesMessage(applicationMessages.usuarioCriadoSucesso()));
             telaHome();
         } catch (UsuarioJaCadastradoException e) {
             catchEvent.fire(new ExceptionToCatchEvent(e));
@@ -79,6 +88,7 @@ public class LoginBean implements Serializable {
     }
 
     @Produces
+    @RequestScoped
     @Logado
     public Usuario getUsuarioLogado() {
         return this.usuario;

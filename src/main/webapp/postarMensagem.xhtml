@@ -1,20 +1,23 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui">
 
-	<!-- 
+<!-- 
 		Replace path to template, title, header and body
 		with actual data.
 	 -->
-	<ui:composition template="/template.xhtml">
-			<ui:define name="pageHeader">Tela Principal</ui:define>
-			<ui:define name="body">
-				<form jsfc="h:form" id="Form">
-				
-				</form>
-			</ui:define>
-	</ui:composition>
+<ui:composition template="/template.xhtml">
+    <ui:define name="pageHeader">Tela Principal</ui:define>
+    <ui:define name="body">
+        <form jsfc="h:form" id="Form">
+            <br style="clear: both;" />
+            <p:menu>
+                <p:submenu label="Opções">
+                    <p:menuitem value="LogOff" action="#{loginBean.logoff()}" icon="ui-icon-home" />
+                </p:submenu>
+            </p:menu>
+        </form>
+    </ui:define>
+</ui:composition>
 
 </html>

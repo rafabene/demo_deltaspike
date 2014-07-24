@@ -346,7 +346,14 @@
             <scope>test</scope>
         </dependency>
         
-        <!-- Driver -->
+        <!-- PrimeFaces -->
+        <dependency>
+            <groupId>org.primefaces</groupId>
+            <artifactId>primefaces</artifactId>
+            <version>5.0</version>
+        </dependency>
+        
+        <!-- Driver usado apenas para demonstrar o ServiceLoader-->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>

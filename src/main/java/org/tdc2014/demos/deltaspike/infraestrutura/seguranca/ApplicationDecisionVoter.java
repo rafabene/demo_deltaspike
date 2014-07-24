@@ -1,8 +1,9 @@
-package org.tdc2014.demos.deltaspike.infrastrutura;
+package org.tdc2014.demos.deltaspike.infraestrutura.seguranca;
 
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.faces.bean.ApplicationScoped;
 import javax.inject.Inject;
 
 import org.apache.deltaspike.security.api.authorization.AccessDecisionVoter;
@@ -10,6 +11,7 @@ import org.apache.deltaspike.security.api.authorization.AccessDecisionVoterConte
 import org.apache.deltaspike.security.api.authorization.SecurityViolation;
 import org.tdc2014.demos.deltaspike.dominio.entidades.Usuario;
 
+@ApplicationScoped
 public class ApplicationDecisionVoter implements AccessDecisionVoter {
     
 

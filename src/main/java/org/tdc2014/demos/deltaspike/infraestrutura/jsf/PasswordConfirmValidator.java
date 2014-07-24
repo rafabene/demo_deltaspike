@@ -1,4 +1,4 @@
-package org.tdc2014.demos.deltaspike.infrastrutura;
+package org.tdc2014.demos.deltaspike.infraestrutura.jsf;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;

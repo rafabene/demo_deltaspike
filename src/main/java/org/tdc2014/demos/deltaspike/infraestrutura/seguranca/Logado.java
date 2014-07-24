@@ -1,4 +1,4 @@
-package org.tdc2014.demos.deltaspike.infrastrutura;
+package org.tdc2014.demos.deltaspike.infraestrutura.seguranca;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;

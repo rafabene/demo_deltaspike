@@ -1,4 +1,4 @@
-package org.tdc2014.demos.deltaspike.infrastrutura;
+package org.tdc2014.demos.deltaspike.infraestrutura;
 
 import javax.enterprise.context.RequestScoped;
 import javax.enterprise.inject.Disposes;

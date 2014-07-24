@@ -30,6 +30,8 @@ public class Usuario extends AbstractEntity<Long> {
     @NotNull
     private char[] password;
 
+    private String role = "guest";
+
     @ManyToMany
     @JoinTable(name = "usuario_tem_seguidores",
         joinColumns = { @JoinColumn(name = "usuario_id") },
@@ -55,6 +57,10 @@ public class Usuario extends AbstractEntity<Long> {
 
     public void setPassword(char[] password) {
         this.password = password;
+    }
+
+    public String getRole() {
+        return role;
     }
 
 }

@@ -9,6 +9,7 @@ import javax.persistence.NoResultException;
 import org.apache.deltaspike.core.api.exception.control.event.ExceptionToCatchEvent;
 import org.tdc2014.demos.deltaspike.dominio.entidades.Usuario;
 import org.tdc2014.demos.deltaspike.dominio.repositorios.RepositorioUsuarios;
+import org.tdc2014.demos.deltaspike.infraestrutura.i18n.ApplicationMessages;
 
 public class LoginService implements Serializable {
 
@@ -19,6 +20,9 @@ public class LoginService implements Serializable {
 
     @Inject
     private Event<ExceptionToCatchEvent> catchEvent;
+    
+    @Inject
+    private ApplicationMessages applicationMessages;
 
     public Usuario login(String username, char[] password) {
         try {
@@ -26,7 +30,7 @@ public class LoginService implements Serializable {
             return usuario;
         } catch (NoResultException e) {
             // O tratamento de exception é delegado para os @ExceptionHandlers
-            catchEvent.fire(new ExceptionToCatchEvent(new Throwable("Acesso Negado!")));
+            catchEvent.fire(new ExceptionToCatchEvent(new Throwable(applicationMessages.acessoNegado())));
         }
         return null;
     }
