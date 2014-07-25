@@ -16,7 +16,7 @@
                     <p:submenu label="#{screenLabelMessage.opcoes()}">
                         <p:menuitem value="#{screenLabelMessage.tarefaAdministrativa()}"
                             action="#{adminBean.iniciarTarefaAdministrativa()}" icon="ui-icon-star" immediate="true"
-                            update="@all" />
+                            ajax="false" update="@all" />
                         <p:menuitem value="#{screenLabelMessage.logoff()}" action="#{loginBean.logoff()}" icon="ui-icon-home"
                             immediate="true" />
                     </p:submenu>
@@ -35,9 +35,35 @@
                 <h:message for="mensagem" />
                 <br />
                 <h:commandButton action="#{postagemBean.postarMensage()}" value="#{screenLabelMessage.postarMensagem()}" />
-                <h:commandButton action="#{adminBean.iniciarTarefaAdministrativa()}" value="#{screenLabelMessage.tarefaAdministrativa()}" />
+            </div>
+            <div style="width: 80%; padding-top: 10px">
+                <h:dataTable value="#{postagemBean.timeline}" var="varPostagem" border="1" width="100%"
+                    rendered="#{not empty postagemBean.timeline}">
+                    <h:column headerClass="col1">
+                        <f:facet name="header">
+                           #{screenLabelMessage.dadosPostagem()}
+                        </f:facet>
+                        #{varPostagem.autor.username}
+                        <br />
+                        <h:outputText value="#{varPostagem.datetime}">
+                            <f:convertDateTime dateStyle="short" />
+                        </h:outputText>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                           #{screenLabelMessage.mensagem()}
+                        </f:facet>
+                        #{varPostagem.mensagem}
+                    </h:column>
+                </h:dataTable>
             </div>
         </form>
+
+        <style type="text/css">
+            .col1 {
+            	width: 20%;
+            }
+         </style>
 
         <script type="text/javascript">
         $(document).ready(function() {  

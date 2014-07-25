@@ -10,8 +10,12 @@ public interface ApplicationMessages {
     public String acessoNegado();
 
     public String usuarioJaCadastrado();
-    
+
     public String mensagemPublicada();
-    
-    public String tarefaAdminstrativaIniciada();
+
+    public String tarefaAdminstrativaAgendada();
+
+    public String tarefaAdminstrativaExecutada();
+
+    public String tarefaAdminstrativaRemovida();
 }

@@ -21,7 +21,7 @@ import org.tdc2014.demos.deltaspike.dominio.servicos.LoginService;
 import org.tdc2014.demos.deltaspike.dominio.servicos.UsuarioService;
 import org.tdc2014.demos.deltaspike.infraestrutura.exceptions.UsuarioJaCadastradoException;
 import org.tdc2014.demos.deltaspike.infraestrutura.i18n.ApplicationMessages;
-import org.tdc2014.demos.deltaspike.infraestrutura.seguranca.Logado;
+import org.tdc2014.demos.deltaspike.infraestrutura.seguranca.Logged;
 
 @Named
 @WindowScoped
@@ -89,7 +89,7 @@ public class LoginBean implements Serializable {
 
     @Produces
     @RequestScoped
-    @Logado
+    @Logged
     public Usuario getUsuarioLogado() {
         return this.usuario;
     }

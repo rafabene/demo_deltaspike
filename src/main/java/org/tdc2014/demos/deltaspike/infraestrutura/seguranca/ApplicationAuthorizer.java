@@ -12,7 +12,7 @@ public class ApplicationAuthorizer
 {
     @Secures
     @AdminOnly
-    public boolean verificaPermissao(InvocationContext invocationContext, BeanManager manager, @Logado Usuario usuario) throws Exception
+    public boolean verificaPermissao(InvocationContext invocationContext, BeanManager manager, @Logged Usuario usuario) throws Exception
     {
         return usuario.getRole().equalsIgnoreCase("Admin");
     }

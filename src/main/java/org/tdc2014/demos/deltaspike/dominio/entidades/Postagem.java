@@ -1,11 +1,16 @@
 package org.tdc2014.demos.deltaspike.dominio.entidades;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Length;
 
@@ -24,6 +29,10 @@ public class Postagem extends AbstractEntity<Long> {
     @ManyToOne
     @JoinColumn(name = "autor_id")
     private Usuario autor;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    @NotNull
+    private Date datetime;
 
     @Override
     public Long getId() {
@@ -44,6 +53,14 @@ public class Postagem extends AbstractEntity<Long> {
 
     public void setMensagem(String mensagem) {
         this.mensagem = mensagem;
+    }
+    
+    public Date getDatetime() {
+        return datetime;
+    }
+    
+    public void setDatetime(Date datetime) {
+        this.datetime = datetime;
     }
 
 }

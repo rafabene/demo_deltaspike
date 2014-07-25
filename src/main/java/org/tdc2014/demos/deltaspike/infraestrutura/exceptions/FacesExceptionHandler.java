@@ -24,7 +24,7 @@ public class FacesExceptionHandler {
         evt.handledAndContinue();
     }
 
-    // Mostra a mensagem de erro no JSF
+    // Propaga a exception
     void handleAccessDenied(@Handles ExceptionEvent<AccessDeniedException> evt, FacesContext facesContext) {
         facesContext.addMessage(null, new FacesMessage(applicationMessages.acessoNegado()));
         evt.rethrow(evt.getException());

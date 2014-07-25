@@ -36,4 +36,8 @@ public interface ScreenLabelMessage {
     
     public String tarefaAdministrativa();
     
+    public String autor();
+    
+    public String dadosPostagem();
+    
 }

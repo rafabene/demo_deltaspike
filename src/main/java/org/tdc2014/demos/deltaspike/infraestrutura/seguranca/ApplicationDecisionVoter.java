@@ -18,7 +18,7 @@ public class ApplicationDecisionVoter implements AccessDecisionVoter {
     private static final long serialVersionUID = 1L;
     
     @Inject
-    @Logado
+    @Logged
     private Usuario usuarioLogado;
 
     @Override
