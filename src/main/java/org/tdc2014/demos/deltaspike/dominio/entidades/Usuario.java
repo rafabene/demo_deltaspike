@@ -3,6 +3,7 @@ package org.tdc2014.demos.deltaspike.dominio.entidades;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -32,11 +33,11 @@ public class Usuario extends AbstractEntity<Long> {
 
     private String role = "guest";
 
-    @ManyToMany
-    @JoinTable(name = "usuario_tem_seguidores",
+    @ManyToMany(cascade = { CascadeType.PERSIST })
+    @JoinTable(name = "usuario_segue_outrosusuarios",
         joinColumns = { @JoinColumn(name = "usuario_id") },
         inverseJoinColumns = { @JoinColumn(name = "seguido_id") })
-    private List<Usuario> seguidores = new ArrayList<Usuario>();
+    private List<Usuario> seguidos = new ArrayList<Usuario>();
 
     @Override
     public Long getId() {
@@ -61,6 +62,10 @@ public class Usuario extends AbstractEntity<Long> {
 
     public String getRole() {
         return role;
+    }
+
+    public List<Usuario> getSeguidos() {
+        return seguidos;
     }
 
 }

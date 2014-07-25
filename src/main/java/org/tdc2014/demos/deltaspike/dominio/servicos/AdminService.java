@@ -7,7 +7,7 @@ import javax.inject.Inject;
 
 import org.tdc2014.demos.deltaspike.infraestrutura.i18n.ApplicationMessages;
 
-public class AdminServices implements Serializable {
+public class AdminService implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

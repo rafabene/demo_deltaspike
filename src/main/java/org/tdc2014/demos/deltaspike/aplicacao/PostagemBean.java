@@ -46,4 +46,8 @@ public class PostagemBean {
         return postagemService.getTimeLine(usuarioLogado);
     }
 
+    
+    public Usuario getUsuarioLogado() {
+        return usuarioLogado;
+    }
 }

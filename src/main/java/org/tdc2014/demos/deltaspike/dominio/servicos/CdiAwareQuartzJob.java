@@ -18,7 +18,7 @@ public class CdiAwareQuartzJob implements org.quartz.Job {
 
     // O Job permite injeção CDI
     @Inject
-    private AdminServices service;
+    private AdminService service;
     
     @Inject
     private ApplicationMessages applicationMessages;

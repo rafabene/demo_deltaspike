@@ -40,4 +40,16 @@ public interface ScreenLabelMessage {
     
     public String dadosPostagem();
     
+    public String seguirUsuarios();
+
+    public String seguirUsuario();
+
+    public String acao();
+    
+    public String voltar();
+    
+    public String atualizar();
+    
+    public String logadoComo(String username);
+    
 }

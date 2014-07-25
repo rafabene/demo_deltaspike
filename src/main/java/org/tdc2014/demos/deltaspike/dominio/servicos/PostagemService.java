@@ -19,6 +19,7 @@ public class PostagemService {
     private RepositorioUsuarios repositorioUsuarios;
 
     public List<Postagem> getTimeLine(Usuario usuario) {
+        //TODO implementar para trazer apenas dos followers
         return repositorioPostagens.findAll();
     }
 

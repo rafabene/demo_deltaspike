@@ -9,4 +9,5 @@ public interface RepositorioUsuarios extends EntityRepository<Usuario, Long> {
 
     // O próprio nome do método cria o SQL
     public Usuario findByUsernameAndPassword(String username, char[] password);
+    
 }

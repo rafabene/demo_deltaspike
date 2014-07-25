@@ -27,7 +27,11 @@ public class ApplicationViewConfig {
     public class CriarUsuario implements ApplicationView {
     }
 
-    public class PostarMensagem implements SecuredPages, ApplicationView {
+    public class PostarMensagem implements SecuredPages {
+
+    }
+
+    public class ListUsuarios implements SecuredPages {
 
     }
 }

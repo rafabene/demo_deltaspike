@@ -18,4 +18,6 @@ public interface ApplicationMessages {
     public String tarefaAdminstrativaExecutada();
 
     public String tarefaAdminstrativaRemovida();
+    
+    public String seguindoUsuario(String username);
 }

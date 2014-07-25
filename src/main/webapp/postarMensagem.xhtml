@@ -9,6 +9,7 @@
 <ui:composition template="/template.xhtml">
     <ui:define name="pageHeader">Tela Principal</ui:define>
     <ui:define name="body">
+        #{screenLabelMessage.logadoComo(postagemBean.usuarioLogado.username)}
         <form jsfc="h:form" id="Form">
             <br style="clear: both;" />
             <div style="display: inline-block;">
@@ -16,13 +17,17 @@
                     <p:submenu label="#{screenLabelMessage.opcoes()}">
                         <p:menuitem value="#{screenLabelMessage.tarefaAdministrativa()}"
                             action="#{adminBean.iniciarTarefaAdministrativa()}" icon="ui-icon-star" immediate="true"
-                            ajax="false" update="@all" />
+                            ajax="false" />
+                        <p:menuitem value="#{screenLabelMessage.atualizar()}" icon="ui-icon-refresh" immediate="true"
+                            ajax="true" update="@all" />
+                        <p:menuitem value="#{screenLabelMessage.seguirUsuarios()}" action="#{followBean.irParaListUsuarios()}"
+                            icon="ui-icon-person" immediate="true" />
                         <p:menuitem value="#{screenLabelMessage.logoff()}" action="#{loginBean.logoff()}" icon="ui-icon-home"
                             immediate="true" />
                     </p:submenu>
                 </p:menu>
             </div>
-            <div style="display: inline-block; width: 60%">
+            <div style="display: inline-block; width: 70%">
                 #{screenLabelMessage.mensagem()}:
                 <h:outputText id="size"
                     value="#{empty postagemBean.postagem.mensagem?'0':postagemBean.postagem.mensagem.length()}" />
@@ -36,7 +41,7 @@
                 <br />
                 <h:commandButton action="#{postagemBean.postarMensage()}" value="#{screenLabelMessage.postarMensagem()}" />
             </div>
-            <div style="width: 80%; padding-top: 10px">
+            <h:panelGroup id="timeline" layout="block" style="width: 100%; padding-top: 10px">
                 <h:dataTable value="#{postagemBean.timeline}" var="varPostagem" border="1" width="100%"
                     rendered="#{not empty postagemBean.timeline}">
                     <h:column headerClass="col1">
@@ -56,14 +61,15 @@
                         #{varPostagem.mensagem}
                     </h:column>
                 </h:dataTable>
-            </div>
+            </h:panelGroup>
+            <p:poll interval="3" update="timeline" immediate="true"/>
         </form>
 
         <style type="text/css">
-            .col1 {
-            	width: 20%;
-            }
-         </style>
+.col1 {
+	width: 20%;
+}
+</style>
 
         <script type="text/javascript">
         $(document).ready(function() {  
