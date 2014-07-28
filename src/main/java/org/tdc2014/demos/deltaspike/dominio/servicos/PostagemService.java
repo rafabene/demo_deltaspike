@@ -19,15 +19,17 @@ public class PostagemService {
     private RepositorioUsuarios repositorioUsuarios;
 
     public List<Postagem> getTimeLine(Usuario usuario) {
-        //TODO implementar para trazer apenas dos followers
-        return repositorioPostagens.findAll();
+        Usuario managedUser = repositorioUsuarios.findBy(usuario.getId());
+        List<Usuario> seguidos = managedUser.getSeguidos();
+        // Adiciona o proprio usuario como seguido
+        seguidos.add(usuario);
+        return repositorioPostagens.findBySeguidos(seguidos);
     }
 
-    public void postarMensagem(Usuario usuario, Postagem postagem){
+    public void postarMensagem(Usuario usuario, Postagem postagem) {
         Usuario managedUser = repositorioUsuarios.findBy(usuario.getId());
         postagem.setDatetime(new Date());
         postagem.setAutor(managedUser);
-        repositorioPostagens.save(postagem);
-        repositorioPostagens.flush();
+        repositorioPostagens.saveAndFlush(postagem);
     }
 }

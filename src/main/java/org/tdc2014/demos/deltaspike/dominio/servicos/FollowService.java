@@ -30,8 +30,7 @@ public class FollowService {
     public void seguirUsuario(Usuario seguido) {
         Usuario usuario = repositorioUsuarios.findBy(usuarioLogado.getId());
         usuario.getSeguidos().add(seguido);
-        repositorioUsuarios.save(usuario);
-        repositorioUsuarios.flush();
+        repositorioUsuarios.saveAndFlush(usuario);
     }
 
 }
