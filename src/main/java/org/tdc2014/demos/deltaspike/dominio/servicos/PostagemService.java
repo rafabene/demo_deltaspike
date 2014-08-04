@@ -22,7 +22,7 @@ public class PostagemService {
         Usuario managedUser = repositorioUsuarios.findBy(usuario.getId());
         List<Usuario> seguidos = managedUser.getSeguidos();
         // Adiciona o proprio usuario como seguido
-        seguidos.add(usuario);
+        seguidos.add(managedUser);
         return repositorioPostagens.findBySeguidos(seguidos);
     }
 

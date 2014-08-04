@@ -10,6 +10,7 @@ import org.apache.deltaspike.core.api.exception.control.event.ExceptionToCatchEv
 import org.tdc2014.demos.deltaspike.dominio.entidades.Usuario;
 import org.tdc2014.demos.deltaspike.dominio.repositorios.RepositorioUsuarios;
 import org.tdc2014.demos.deltaspike.infraestrutura.i18n.ApplicationMessages;
+import org.tdc2014.demos.deltaspike.infraestrutura.seguranca.UsuarioLogadoEvent;
 
 public class LoginService implements Serializable {
 
@@ -22,11 +23,16 @@ public class LoginService implements Serializable {
     private Event<ExceptionToCatchEvent> catchEvent;
     
     @Inject
+    private Event<UsuarioLogadoEvent> usuarioLogadoEvent; 
+    
+    @Inject
     private ApplicationMessages applicationMessages;
 
     public Usuario login(String username, char[] password) {
         try {
             Usuario usuario = repositorioUsuarios.findByUsernameAndPassword(username, password);
+            //Dispara o evento de usuário logado
+            usuarioLogadoEvent.fire(new UsuarioLogadoEvent());
             return usuario;
         } catch (NoResultException e) {
             // O tratamento de exception é delegado para os @ExceptionHandlers

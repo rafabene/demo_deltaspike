@@ -7,8 +7,8 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
-import org.tdc2014.demos.deltaspike.aplicacao.ApplicationViewConfig.ListUsuarios;
-import org.tdc2014.demos.deltaspike.aplicacao.ApplicationViewConfig.PostarMensagem;
+import org.tdc2014.demos.deltaspike.aplicacao.Pages.ListUsuarios;
+import org.tdc2014.demos.deltaspike.aplicacao.Pages.PostarMensagem;
 import org.tdc2014.demos.deltaspike.dominio.entidades.Usuario;
 import org.tdc2014.demos.deltaspike.dominio.servicos.FollowService;
 import org.tdc2014.demos.deltaspike.infraestrutura.i18n.ApplicationMessages;

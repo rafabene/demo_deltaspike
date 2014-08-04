@@ -13,9 +13,9 @@ import javax.inject.Named;
 import org.apache.deltaspike.core.api.config.view.navigation.ViewNavigationHandler;
 import org.apache.deltaspike.core.api.exception.control.event.ExceptionToCatchEvent;
 import org.apache.deltaspike.core.api.scope.WindowScoped;
-import org.tdc2014.demos.deltaspike.aplicacao.ApplicationViewConfig.CriarUsuario;
-import org.tdc2014.demos.deltaspike.aplicacao.ApplicationViewConfig.PostarMensagem;
-import org.tdc2014.demos.deltaspike.aplicacao.ApplicationViewConfig.Welcome;
+import org.tdc2014.demos.deltaspike.aplicacao.Pages.CriarUsuario;
+import org.tdc2014.demos.deltaspike.aplicacao.Pages.PostarMensagem;
+import org.tdc2014.demos.deltaspike.aplicacao.Pages.Welcome;
 import org.tdc2014.demos.deltaspike.dominio.entidades.Usuario;
 import org.tdc2014.demos.deltaspike.dominio.servicos.LoginService;
 import org.tdc2014.demos.deltaspike.dominio.servicos.UsuarioService;
@@ -46,10 +46,10 @@ public class LoginBean implements Serializable {
 
     @Inject
     private ViewNavigationHandler viewNavigationHandler;
-
+    
     @Inject
     private ApplicationMessages applicationMessages;
-
+  
     public Usuario getUsuario() {
         return usuario;
     }
@@ -93,4 +93,5 @@ public class LoginBean implements Serializable {
     public Usuario getUsuarioLogado() {
         return this.usuario;
     }
+    
 }

@@ -10,7 +10,7 @@ import org.tdc2014.demos.deltaspike.infraestrutura.seguranca.ApplicationDecision
 
 // A validação do caminho acontece em tempo de deploy
 @Folder(name = "/")
-public class ApplicationViewConfig {
+public class Pages {
 
     @View(navigation = NavigationMode.REDIRECT)
     public interface ApplicationView extends ViewConfig {
