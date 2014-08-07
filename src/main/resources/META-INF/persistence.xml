@@ -24,7 +24,7 @@
          data source, this example data source is just for development and testing! -->
       <!-- The datasource is deployed as WEB-INF/demo_cdi_tdc2014-ds.xml, you
          can find it in the source at src/main/webapp/WEB-INF/demo_cdi_tdc2014-ds.xml -->
-        <jta-data-source>java:jboss/datasources/demo_cdi_tdc2014DS</jta-data-source>
+        <jta-data-source>java:jboss/datasources/demo_deltaspikeDS</jta-data-source>
         <properties>
          <!-- Properties for Hibernate -->
             <property name="hibernate.hbm2ddl.auto" value="create" />

@@ -1,7 +1,7 @@
-demo-cdi-tdc2014
+demo_deltaspike
 ================
 
-Projeto de demonstração da especificação CDI para o TDC 2014
+Projeto de demonstração sobre CDI Portable Extensions e DeltaSpike
 
 Para executar:
 
@@ -25,9 +25,9 @@ Build e Deploy da Demo
 
         mvn clean package wildfly:deploy
 
-4. Isto irá implantar o arquivo `/target/demo_cdi_tdc2014.war` no instância do servidor em execução.
+4. Isto irá implantar o arquivo `/target/demo_deltaspike.war` no instância do servidor em execução.
  
 Acesse a aplicação
 -------------------
 
-A aplicação estará sendo executada na seguinte URL: <http://localhost:8080/demo_cdi_tdc2014/>.
+A aplicação estará sendo executada na seguinte URL: <http://localhost:8080/demo_deltaspike/>.
