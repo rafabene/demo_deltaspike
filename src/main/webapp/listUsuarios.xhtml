@@ -14,20 +14,20 @@
                 rendered="#{not empty followBean.listaUsuarios()}">
                 <h:column>
                     <f:facet name="header">
-                            #{screenLabelMessage.usuario()}
+                            #{label.usuario()}
                         </f:facet>
                         #{varUsuario.username}
                 </h:column>
                 <h:column headerClass="col2">
                     <f:facet name="header">
-                            #{screenLabelMessage.acao()}
+                            #{label.acao()}
                         </f:facet>
-                    <h:commandButton value="#{screenLabelMessage.seguirUsuario()}"
+                    <h:commandButton value="#{label.seguirUsuario()}"
                         action="#{followBean.seguirUsuario(varUsuario)}" />
                 </h:column>
 
             </h:dataTable>
-            <h:commandButton value="#{screenLabelMessage.voltar()}" action="#{followBean.telaPostarMensagem()}" />
+            <h:commandButton value="#{label.voltar()}" action="#{followBean.telaPostarMensagem()}" />
 
         </form>
 

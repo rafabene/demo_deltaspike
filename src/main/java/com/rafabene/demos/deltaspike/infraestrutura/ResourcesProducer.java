@@ -38,7 +38,7 @@ public class ResourcesProducer {
 
     @Produces
     @ApplicationScoped
-    protected Scheduler<Job> produceScheduler(Scheduler scheduler)
+    protected Scheduler<Job> produceScheduler(Scheduler<Job> scheduler)
     {
         return scheduler;
     }

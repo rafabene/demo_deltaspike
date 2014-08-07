@@ -5,9 +5,9 @@ import javax.inject.Named;
 import org.apache.deltaspike.core.api.message.MessageBundle;
 import org.apache.deltaspike.core.api.message.MessageTemplate;
 
-@Named
+@Named("label")
 @MessageBundle
-public interface ScreenLabelMessage {
+public interface LabelsMessage {
 
     public String usuario();
 

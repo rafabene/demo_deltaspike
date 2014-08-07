@@ -8,7 +8,7 @@ import javax.persistence.PersistenceException;
 import com.rafabene.demos.deltaspike.dominio.entidades.Usuario;
 import com.rafabene.demos.deltaspike.dominio.repositorios.RepositorioUsuarios;
 import com.rafabene.demos.deltaspike.infraestrutura.exceptions.UsuarioJaCadastradoException;
-import com.rafabene.demos.deltaspike.infraestrutura.i18n.ApplicationMessages;
+import com.rafabene.demos.deltaspike.infraestrutura.i18n.Messages;
 
 public class UsuarioService implements Serializable {
 
@@ -18,7 +18,7 @@ public class UsuarioService implements Serializable {
     private RepositorioUsuarios repositorioUsuarios;
     
     @Inject
-    private ApplicationMessages applicationMessages;
+    private Messages applicationMessages;
 
     public void criarLogin(Usuario usuario) throws UsuarioJaCadastradoException {
         try {

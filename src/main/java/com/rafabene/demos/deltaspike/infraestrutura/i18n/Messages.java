@@ -3,7 +3,7 @@ package com.rafabene.demos.deltaspike.infraestrutura.i18n;
 import org.apache.deltaspike.core.api.message.MessageBundle;
 
 @MessageBundle
-public interface ApplicationMessages {
+public interface Messages {
 
     public String usuarioCriadoSucesso();
 

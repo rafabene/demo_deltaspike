@@ -9,7 +9,7 @@ import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 import org.quartz.SchedulerException;
 
-import com.rafabene.demos.deltaspike.infraestrutura.i18n.ApplicationMessages;
+import com.rafabene.demos.deltaspike.infraestrutura.i18n.Messages;
 
 //Job de exemplo agendado para rodar a cada 1 minuto
 @Scheduled(cronExpression = "0 0/1 * * * ?", onStartup = false)
@@ -22,7 +22,7 @@ public class CdiAwareQuartzJob implements org.quartz.Job {
     private AdminService service;
     
     @Inject
-    private ApplicationMessages applicationMessages;
+    private Messages applicationMessages;
     
     @Inject
     private Logger logger;

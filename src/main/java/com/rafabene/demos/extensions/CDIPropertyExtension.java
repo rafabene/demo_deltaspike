@@ -69,7 +69,12 @@ public class CDIPropertyExtension implements Extension {
                 public String create(CreationalContext<String> creationalContext) {
                     // retorna nulo se não existe a propriedade
                     // Poderia lançar uma exception;
-                    return propertiesFile.getProperty(s);
+
+                    String p = propertiesFile.getProperty(s);
+                    if (p == null) {
+                        throw new IllegalStateException("Não existe " + s);
+                    }
+                    return s;
                 }
 
                 @Override

@@ -11,7 +11,7 @@ import com.rafabene.demos.deltaspike.aplicacao.Pages.ListUsuarios;
 import com.rafabene.demos.deltaspike.aplicacao.Pages.PostarMensagem;
 import com.rafabene.demos.deltaspike.dominio.entidades.Usuario;
 import com.rafabene.demos.deltaspike.dominio.servicos.FollowService;
-import com.rafabene.demos.deltaspike.infraestrutura.i18n.ApplicationMessages;
+import com.rafabene.demos.deltaspike.infraestrutura.i18n.Messages;
 
 @Model
 public class FollowBean {
@@ -23,7 +23,7 @@ public class FollowBean {
     private FacesContext facesContext;
 
     @Inject
-    private ApplicationMessages applicationMessages;
+    private Messages applicationMessages;
 
     public Class<ListUsuarios> irParaListUsuarios() {
         return ListUsuarios.class;

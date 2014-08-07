@@ -9,7 +9,7 @@ import org.apache.deltaspike.scheduler.spi.Scheduler;
 import org.quartz.Job;
 
 import com.rafabene.demos.deltaspike.dominio.servicos.CdiAwareQuartzJob;
-import com.rafabene.demos.deltaspike.infraestrutura.i18n.ApplicationMessages;
+import com.rafabene.demos.deltaspike.infraestrutura.i18n.Messages;
 import com.rafabene.demos.deltaspike.infraestrutura.seguranca.AdminOnly;
 
 @Model
@@ -19,7 +19,7 @@ public class AdminBean {
     private FacesContext facesContext;
 
     @Inject
-    private ApplicationMessages applicationMessages;
+    private Messages applicationMessages;
 
     @Inject
     private Scheduler<Job> jobScheduler;

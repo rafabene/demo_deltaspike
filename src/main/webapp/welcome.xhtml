@@ -11,10 +11,10 @@
     <ui:define name="body">
         <form jsfc="h:form" id="Form">
             <h:panelGrid columns="3" id="RegisterGroupPanel">
-            #{screenLabelMessage.usuario()}:
+            #{label.usuario()}:
             <h:inputText value="#{loginBean.usuario.username}" id="username" required="true" />
                 <h:message for="username" />
-                <br /> #{screenLabelMessage.senha()}:
+                <br /> #{label.senha()}:
             <h:inputSecret value="#{loginBean.usuario.password}" id="password" converter="Char[]Converter" required="true" />
                 <h:message for="password" />
                 <br />
@@ -22,7 +22,7 @@
                 <br />
                 <!-- O link abaixo poderia chamar a tela de criar usuário diretamente, mas foi usado desta maneira apenas 
             para demonstrar a funcionalidade -->
-                <h:commandLink action="#{loginBean.telaCriarUsuario()}" value="#{screenLabelMessage.registrarUsuario()}" immediate="true" />
+                <h:commandLink action="#{loginBean.telaCriarUsuario()}" value="#{label.registrarUsuario()}" immediate="true" />
             </h:panelGrid>
         </form>
     </ui:define>

@@ -10,7 +10,7 @@ import org.apache.deltaspike.core.api.exception.control.event.ExceptionToCatchEv
 
 import com.rafabene.demos.deltaspike.dominio.entidades.Usuario;
 import com.rafabene.demos.deltaspike.dominio.repositorios.RepositorioUsuarios;
-import com.rafabene.demos.deltaspike.infraestrutura.i18n.ApplicationMessages;
+import com.rafabene.demos.deltaspike.infraestrutura.i18n.Messages;
 import com.rafabene.demos.deltaspike.infraestrutura.seguranca.UsuarioLogadoEvent;
 
 public class LoginService implements Serializable {
@@ -27,7 +27,7 @@ public class LoginService implements Serializable {
     private Event<UsuarioLogadoEvent> usuarioLogadoEvent; 
     
     @Inject
-    private ApplicationMessages applicationMessages;
+    private Messages applicationMessages;
 
     public Usuario login(String username, char[] password) {
         try {

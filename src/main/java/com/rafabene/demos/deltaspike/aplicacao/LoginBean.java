@@ -21,7 +21,7 @@ import com.rafabene.demos.deltaspike.dominio.entidades.Usuario;
 import com.rafabene.demos.deltaspike.dominio.servicos.LoginService;
 import com.rafabene.demos.deltaspike.dominio.servicos.UsuarioService;
 import com.rafabene.demos.deltaspike.infraestrutura.exceptions.UsuarioJaCadastradoException;
-import com.rafabene.demos.deltaspike.infraestrutura.i18n.ApplicationMessages;
+import com.rafabene.demos.deltaspike.infraestrutura.i18n.Messages;
 import com.rafabene.demos.deltaspike.infraestrutura.seguranca.Logged;
 
 @Named
@@ -49,7 +49,7 @@ public class LoginBean implements Serializable {
     private ViewNavigationHandler viewNavigationHandler;
     
     @Inject
-    private ApplicationMessages applicationMessages;
+    private Messages applicationMessages;
   
     public Usuario getUsuario() {
         return usuario;

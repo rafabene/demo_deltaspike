@@ -9,26 +9,26 @@
 <ui:composition template="/template.xhtml">
     <ui:define name="pageHeader">Tela Principal</ui:define>
     <ui:define name="body">
-        #{screenLabelMessage.logadoComo(postagemBean.usuarioLogado.username)}
+        #{label.logadoComo(postagemBean.usuarioLogado.username)}
         <form jsfc="h:form" id="Form">
             <br style="clear: both;" />
             <div style="display: inline-block;">
                 <p:menu>
-                    <p:submenu label="#{screenLabelMessage.opcoes()}">
-                        <p:menuitem value="#{screenLabelMessage.tarefaAdministrativa()}"
+                    <p:submenu label="#{label.opcoes()}">
+                        <p:menuitem value="#{label.tarefaAdministrativa()}"
                             action="#{adminBean.iniciarTarefaAdministrativa()}" icon="ui-icon-star" immediate="true"
                             ajax="false" />
-                        <p:menuitem value="#{screenLabelMessage.atualizar()}" icon="ui-icon-refresh" immediate="true"
+                        <p:menuitem value="#{label.atualizar()}" icon="ui-icon-refresh" immediate="true"
                             ajax="true" update="@all" />
-                        <p:menuitem value="#{screenLabelMessage.seguirUsuarios()}" action="#{followBean.irParaListUsuarios()}"
+                        <p:menuitem value="#{label.seguirUsuarios()}" action="#{followBean.irParaListUsuarios()}"
                             icon="ui-icon-person" immediate="true" />
-                        <p:menuitem value="#{screenLabelMessage.logoff()}" action="#{loginBean.logoff()}" icon="ui-icon-home"
+                        <p:menuitem value="#{label.logoff()}" action="#{loginBean.logoff()}" icon="ui-icon-home"
                             immediate="true" />
                     </p:submenu>
                 </p:menu>
             </div>
             <div style="display: inline-block; width: 70%">
-                #{screenLabelMessage.mensagem()}:
+                #{label.mensagem()}:
                 <h:outputText id="size"
                     value="#{empty postagemBean.postagem.mensagem?'0':postagemBean.postagem.mensagem.length()}" />
                 /100 <br />
@@ -39,14 +39,14 @@
                 <br />
                 <h:message for="mensagem" />
                 <br />
-                <h:commandButton action="#{postagemBean.postarMensage()}" value="#{screenLabelMessage.postarMensagem()}" />
+                <h:commandButton action="#{postagemBean.postarMensage()}" value="#{label.postarMensagem()}" />
             </div>
             <h:panelGroup id="timeline" layout="block" style="width: 100%; padding-top: 10px">
                 <h:dataTable value="#{postagemBean.timeline}" var="varPostagem" border="1" width="100%"
                     rendered="#{not empty postagemBean.timeline}">
                     <h:column headerClass="col1">
                         <f:facet name="header">
-                           #{screenLabelMessage.dadosPostagem()}
+                           #{label.dadosPostagem()}
                         </f:facet>
                         #{varPostagem.autor.username}
                         <br />
@@ -56,7 +56,7 @@
                     </h:column>
                     <h:column>
                         <f:facet name="header">
-                           #{screenLabelMessage.mensagem()}
+                           #{label.mensagem()}
                         </f:facet>
                         #{varPostagem.mensagem}
                     </h:column>

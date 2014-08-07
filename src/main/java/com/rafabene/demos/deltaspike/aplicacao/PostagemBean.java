@@ -10,7 +10,7 @@ import javax.inject.Inject;
 import com.rafabene.demos.deltaspike.dominio.entidades.Postagem;
 import com.rafabene.demos.deltaspike.dominio.entidades.Usuario;
 import com.rafabene.demos.deltaspike.dominio.servicos.PostagemService;
-import com.rafabene.demos.deltaspike.infraestrutura.i18n.ApplicationMessages;
+import com.rafabene.demos.deltaspike.infraestrutura.i18n.Messages;
 import com.rafabene.demos.deltaspike.infraestrutura.seguranca.Logged;
 
 @Model
@@ -26,7 +26,7 @@ public class PostagemBean {
     private FacesContext facesContext;
 
     @Inject
-    private ApplicationMessages applicationMessages;
+    private Messages applicationMessages;
 
     @Inject
     @Logged
