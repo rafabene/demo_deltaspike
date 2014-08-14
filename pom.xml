@@ -38,13 +38,6 @@
 
     <developers>
         <developer>
-            <id>filipeportes</id>
-            <email>omeuefilipe@gmail.com</email>
-            <name>Filipe Portes</name>
-            <url>http://filipeportes.wordpress.com/</url>
-            <timezone>-3</timezone>
-        </developer>
-        <developer>
             <id>rafabene</id>
             <email>rafabene@gmail.com</email>
             <name>Rafael Benevides</name>
@@ -183,6 +176,21 @@
             <dependency>
                 <groupId>org.apache.deltaspike.modules</groupId>
                 <artifactId>deltaspike-jsf-module-impl</artifactId>
+                <version>${deltaspike.version}</version>
+                <scope>runtime</scope>
+            </dependency>
+            
+            <!-- DeltaSpike Partial Bean -->
+            <dependency>
+                <groupId>org.apache.deltaspike.modules</groupId>
+                <artifactId>deltaspike-partial-bean-module-api</artifactId>
+                <version>${deltaspike.version}</version>
+                <scope>compile</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.deltaspike.modules</groupId>
+                <artifactId>deltaspike-partial-bean-module-impl</artifactId>
                 <version>${deltaspike.version}</version>
                 <scope>runtime</scope>
             </dependency>
@@ -371,6 +379,16 @@
         <dependency>
             <groupId>org.apache.deltaspike.modules</groupId>
             <artifactId>deltaspike-jsf-module-impl</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.deltaspike.modules</groupId>
+            <artifactId>deltaspike-partial-bean-module-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.deltaspike.modules</groupId>
+            <artifactId>deltaspike-partial-bean-module-impl</artifactId>
         </dependency>
 
         <dependency>

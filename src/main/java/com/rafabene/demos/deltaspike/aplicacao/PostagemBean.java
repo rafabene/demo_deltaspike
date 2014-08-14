@@ -10,6 +10,7 @@ import javax.inject.Inject;
 import com.rafabene.demos.deltaspike.dominio.entidades.Postagem;
 import com.rafabene.demos.deltaspike.dominio.entidades.Usuario;
 import com.rafabene.demos.deltaspike.dominio.servicos.PostagemService;
+import com.rafabene.demos.deltaspike.dominio.servicos.partial.PrePostagemService;
 import com.rafabene.demos.deltaspike.infraestrutura.i18n.Messages;
 import com.rafabene.demos.deltaspike.infraestrutura.seguranca.Logged;
 
@@ -32,11 +33,15 @@ public class PostagemBean {
     @Logged
     private Usuario usuarioLogado;
 
+    @Inject
+    private PrePostagemService prePostagemService;
+
     public Postagem getPostagem() {
         return postagem;
     }
 
     public void postarMensage() {
+        prePostagemService.executePrePostagem(postagem.getMensagem());
         facesContext.addMessage(null, new FacesMessage(applicationMessages.mensagemPublicada()));
         postagemService.postarMensagem(usuarioLogado, postagem);
         postagem = new Postagem();
@@ -46,7 +51,6 @@ public class PostagemBean {
         return postagemService.getTimeLine(usuarioLogado);
     }
 
-    
     public Usuario getUsuarioLogado() {
         return usuarioLogado;
     }
