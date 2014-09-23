@@ -11,7 +11,7 @@ public class MeuBean {
     private String propriedade1;
 
     @Inject
-    @Propriedade("key2")
+    @Propriedade("key4")
     private String propriedade2;
     
     public String getPropriedade1() {

@@ -10,6 +10,7 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.apache.deltaspike.core.api.config.view.ViewConfig;
 import org.apache.deltaspike.core.api.config.view.navigation.ViewNavigationHandler;
 import org.apache.deltaspike.core.api.exception.control.event.ExceptionToCatchEvent;
 import org.apache.deltaspike.core.api.scope.WindowScoped;
@@ -56,8 +57,13 @@ public class LoginBean implements Serializable {
     }
 
     // type-safe outcome
-    public Class<PostarMensagem> login() {
-        this.usuario = loginService.login(usuario.getUsername(), usuario.getPassword());
+    public Class<? extends ViewConfig> login() {
+        Usuario usuarioLogado = loginService.login(usuario.getUsername(), usuario.getPassword());
+        //Fica na própria página
+        if (usuarioLogado == null){
+            return Pages.Welcome.class;
+        }
+        this.usuario = usuarioLogado;
         return PostarMensagem.class;
 
     }

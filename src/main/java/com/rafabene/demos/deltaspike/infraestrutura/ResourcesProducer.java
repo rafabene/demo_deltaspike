@@ -38,7 +38,8 @@ public class ResourcesProducer {
 
     @Produces
     @ApplicationScoped
-    protected Scheduler<Job> produceScheduler(Scheduler<Job> scheduler)
+    @SuppressWarnings({"unchecked", "rawtypes", "cdi-ambiguous-dependency"})
+    public Scheduler<Job> produceScheduler(Scheduler scheduler)
     {
         return scheduler;
     }
