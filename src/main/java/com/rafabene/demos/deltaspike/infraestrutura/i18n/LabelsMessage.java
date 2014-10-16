@@ -52,4 +52,7 @@ public interface LabelsMessage {
     
     public String logadoComo(String username);
     
+    @MessageTemplate("{usuario.jms}")
+    public String usuarioJMS();
+    
 }

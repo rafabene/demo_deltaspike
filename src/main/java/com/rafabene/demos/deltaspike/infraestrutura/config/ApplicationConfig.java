@@ -8,6 +8,7 @@ import java.io.InputStreamReader;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.apache.deltaspike.core.api.config.ConfigProperty;
 import org.apache.deltaspike.core.api.config.ConfigResolver;
 import org.apache.deltaspike.core.api.projectstage.ProjectStage;
 import org.apache.deltaspike.core.api.resourceloader.InjectableResource;
@@ -21,6 +22,11 @@ public class ApplicationConfig {
     @Inject
     @InjectableResource(location = "/version.txt")
     private InputStream is;
+
+    // Injeta a configuração
+    @Inject
+    @ConfigProperty(name = "jms.queue.username")
+    private String usuarioJMS;
 
     // Demonstra como retornar o Project Stage Atual
     public ProjectStage getProjectStage() {
@@ -36,7 +42,14 @@ public class ApplicationConfig {
     }
 
     // Demonstra como ler configurações de maneira fácil e de acordo com o ProjectStage
+    // Usa a maneira programática
     public String getFilaJMS() {
         return ConfigResolver.getProjectStageAwarePropertyValue("jms.queue");
+    }
+
+    // Demonstra como ler configurações de maneira fácil e de acordo com o ProjectStage
+    // Usa via injeção CDI
+    public String getUsuarioJMS() {
+        return usuarioJMS;
     }
 }

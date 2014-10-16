@@ -28,15 +28,15 @@ public class PropriedadeProducer {
 
     private Properties propertiesFile = new Properties();
 
-//    @PostConstruct
-//    public void setup() {
-//        try {
-//            propertiesFile.load(is);
-//        } catch (IOException e) {
-//            throw new IllegalStateException(e);
-//        }
-//    }
-//
+    @PostConstruct
+    public void setup() {
+        try {
+            propertiesFile.load(is);
+        } catch (IOException e) {
+            throw new IllegalStateException(e);
+        }
+    }
+
 //    @Produces
 //    @Propriedade("key1")
 //    public String propriedade1Producer() {
