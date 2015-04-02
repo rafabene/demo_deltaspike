@@ -24,83 +24,104 @@ import javax.enterprise.inject.spi.ProcessInjectionTarget;
 
 import org.jboss.logging.Logger;
 
-public class CDIPropertyExtension implements Extension {
+public class CDIPropertyExtension implements Extension
+{
 
     private Logger logger = Logger.getLogger(getClass());
 
-    private final List<String> properties = new LinkedList<String>();
+    private final List<String> propertyValues = new LinkedList<String>();
 
-    public void beforeBeanDiscovery(@Observes BeforeBeanDiscovery bbd) {
-        logger.info("Comecei o processo de scanning dos Beans");
+    public void beforeBeanDiscovery(@Observes BeforeBeanDiscovery bbd)
+    {
+        logger.info("Started to scan the Beans");
     }
 
-    public <T> void processAnnotatedType(@Observes ProcessAnnotatedType<T> pat) {
+    public <T> void processAnnotatedType(@Observes ProcessAnnotatedType<T> pat)
+    {
         // Só imprime o scan de classes do pacote org.tdc...
-        if (pat.getAnnotatedType().getJavaClass().getPackage().getName().startsWith("com.rafabene")) {
-            logger.info("Scanning Classe do pacote com.rafabene " + pat.getAnnotatedType().getJavaClass().getName());
+        if (pat.getAnnotatedType().getJavaClass().getPackage().getName().startsWith("com.rafabene"))
+        {
+            logger.info("Scanning class from package com.rafabene " + pat.getAnnotatedType().getJavaClass().getName());
         }
 
     }
 
-    public void processInjectionTarget(@Observes ProcessInjectionTarget<?> pit) {
-        for (InjectionPoint ip : pit.getInjectionTarget().getInjectionPoints()) {
-            Propriedade property = ip.getAnnotated().getAnnotation(Propriedade.class);
-            if (property != null) {
-                properties.add(property.value());
+    public void processInjectionTarget(@Observes ProcessInjectionTarget<?> pit)
+    {
+        for (InjectionPoint ip : pit.getInjectionTarget().getInjectionPoints())
+        {
+            Property property = ip.getAnnotated().getAnnotation(Property.class);
+            if (property != null)
+            {
+                propertyValues.add(property.value());
             }
         }
     }
 
-    public void afterBeanDiscovery(@Observes AfterBeanDiscovery abd) {
-        logger.info("Fim do processo de scanning dos Beans. Agora vou adicionar os Beans para serem injetados");
+    public void afterBeanDiscovery(@Observes AfterBeanDiscovery abd)
+    {
+        logger.info("End of scanning beans. Now I'll add beans to be injected");
         final Properties propertiesFile = new Properties();
-        try {
-            try (InputStream is = this.getClass().getResourceAsStream("/meuproperties.properties")) {
+        try
+        {
+            try (InputStream is = this.getClass().getResourceAsStream("/myProperties.properties"))
+            {
                 propertiesFile.load(is);
             }
-        } catch (IOException e) {
+        }
+        catch (IOException e)
+        {
             throw new IllegalStateException(e);
         }
-        // Criar um Bean com seu respectivo qualifier para cada injection point
-        for (final String s : properties) {
-            abd.addBean(new Bean<String>() {
+        // Create a Bean with a qualifier for each one of the injection point
+        for (final String s : propertyValues)
+        {
+            abd.addBean(new Bean<String>()
+            {
 
                 @Override
-                public String create(CreationalContext<String> creationalContext) {
-                    // retorna nulo se não existe a propriedade
-                    // Poderia lançar uma exception;
+                public String create(CreationalContext<String> creationalContext)
+                {
+                    // returns null if the property doesn't exists
+                    // I could throw an expcetion
                     return propertiesFile.getProperty(s);
                 }
 
                 @Override
-                public void destroy(String s, CreationalContext<String> creationalContext) {
+                public void destroy(String s, CreationalContext<String> creationalContext)
+                {
                     creationalContext.release();
                 }
 
                 @Override
-                public String getName() {
+                public String getName()
+                {
                     return "propriedade" + s;
                 }
 
                 @Override
-                public Set<Annotation> getQualifiers() {
+                public Set<Annotation> getQualifiers()
+                {
                     Set<Annotation> qualifiers = new HashSet<Annotation>();
-                    qualifiers.add(new PropriedadeLiteral(s));
+                    qualifiers.add(new PropertyLiteral(s));
                     return qualifiers;
                 }
 
                 @Override
-                public Class<? extends Annotation> getScope() {
+                public Class<? extends Annotation> getScope()
+                {
                     return Dependent.class;
                 }
 
                 @Override
-                public Set<Class<? extends Annotation>> getStereotypes() {
+                public Set<Class<? extends Annotation>> getStereotypes()
+                {
                     return Collections.emptySet();
                 }
 
                 @Override
-                public Set<Type> getTypes() {
+                public Set<Type> getTypes()
+                {
                     Set<Type> types = new HashSet<Type>();
                     types.add(Object.class);
                     types.add(String.class);
@@ -108,22 +129,26 @@ public class CDIPropertyExtension implements Extension {
                 }
 
                 @Override
-                public boolean isAlternative() {
+                public boolean isAlternative()
+                {
                     return false;
                 }
 
                 @Override
-                public Class<?> getBeanClass() {
+                public Class<?> getBeanClass()
+                {
                     return String.class;
                 }
 
                 @Override
-                public Set<InjectionPoint> getInjectionPoints() {
+                public Set<InjectionPoint> getInjectionPoints()
+                {
                     return Collections.emptySet();
                 }
 
                 @Override
-                public boolean isNullable() {
+                public boolean isNullable()
+                {
                     return false;
                 }
             });

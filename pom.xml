@@ -59,8 +59,8 @@
 
         <!-- Define the version of the JBoss BOMs we want to import to specify 
             tested stacks. -->
-        <version.jboss.bom>8.1.0.Final</version.jboss.bom>
-        <version.arquillian.container>8.1.0.Final</version.arquillian.container>
+        <version.jboss.bom>8.2.0.Final</version.jboss.bom>
+        <version.arquillian.container>8.2.0.Final</version.arquillian.container>
 
         <!-- other plugin versions -->
         <version.compiler.plugin>3.1</version.compiler.plugin>
@@ -72,10 +72,10 @@
         <maven.compiler.source>1.7</maven.compiler.source>
         
         <!-- DeltaSpike version -->
-        <deltaspike.version>1.0.2</deltaspike.version>
+        <deltaspike.version>1.3.0</deltaspike.version>
 
         <!--  Weld Version -->
-        <weld.version>2.1.0.Final</weld.version>
+        <weld.version>2.2.10.Final</weld.version>
     </properties>
 
 

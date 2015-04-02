@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui">
+
+<!-- 
+		Replace path to template, title, header and body
+		with actual data.
+	 -->
+<ui:composition template="/template.xhtml">
+    <ui:define name="pageHeader">Main screen</ui:define>
+    <ui:define name="body">
+        #{label.loggedAs(postBean.loggedUser.username)}
+        <form jsfc="h:form" id="Form">
+            <br style="clear: both;" />
+            <div style="display: inline-block;">
+                <p:menu>
+                    <p:submenu label="#{label.options()}">
+                        <p:menuitem value="#{label.administrativeTask()}"
+                            action="#{adminBean.startAdministrativeTask()}" icon="ui-icon-star" immediate="true"
+                            ajax="false" />
+                        <p:menuitem value="#{label.refresh()}" icon="ui-icon-refresh" immediate="true"
+                            ajax="true" update="@all" />
+                        <p:menuitem value="#{label.followUsers()}" action="#{followBean.gotoListUsers()}"
+                            icon="ui-icon-person" immediate="true" />
+                        <p:menuitem value="#{label.logoff()}" action="#{loginBean.logoff()}" icon="ui-icon-home"
+                            immediate="true" />
+                    </p:submenu>
+                </p:menu>
+            </div>
+            <div style="display: inline-block; width: 70%">
+                #{label.message()}:
+                <h:outputText id="size"
+                    value="#{empty postBean.post.message?'0':postBean.post.message.length()}" />
+                /100 <br />
+                <h:inputTextarea id="message" value="#{postBean.post.message}" cols="50" rows="2">
+                    <f:validateLength maximum="100" minimum="1" />
+                    <p:ajax event="keyup" update="size" />
+                </h:inputTextarea>
+                <br />
+                <h:message for="message" />
+                <br />
+                <h:commandButton action="#{postBean.postMessage()}" value="#{label.postMessage()}" />
+            </div>
+            <h:panelGroup id="timeline" layout="block" style="width: 100%; padding-top: 10px">
+                <h:dataTable value="#{postBean.timeline}" var="varPost" border="1" width="100%"
+                    rendered="#{not empty postBean.timeline}">
+                    <h:column headerClass="col1">
+                        <f:facet name="header">
+                           #{label.postData()}
+                        </f:facet>
+                        #{varPost.author.username}
+                        <br />
+                        <h:outputText value="#{varPost.datetime}">
+                            <f:convertDateTime dateStyle="short" />
+                        </h:outputText>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                           #{label.message()}
+                        </f:facet>
+                        #{varPost.message}
+                    </h:column>
+                </h:dataTable>
+            </h:panelGroup>
+            <p:poll interval="3" update="timeline" immediate="true"/>
+        </form>
+
+        <style type="text/css">
+.col1 {
+	width: 20%;
+}
+</style>
+
+        <script type="text/javascript">
+        $(document).ready(function() {  
+            $("#Form\\:message").keyup(function(){  
+                //get the limit from maxlength attribute  
+                var limit = 100;
+                //get the current text inside the textarea  
+                var text = $(this).val();  
+                //count the number of characters in the text  
+                var chars = text.length;  
+                //check if there are more characters then allowed  
+                if(chars > limit){  
+                    //and if there are use substr to get the text before the limit  
+                    var new_text = text.substr(0, limit);  
+          
+                    //and change the current text with the new text  
+                    $(this).val(new_text);  
+                }  
+            });  
+          
+        });  
+        </script>
+    </ui:define>
+</ui:composition>
+
+</html>

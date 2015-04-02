@@ -27,8 +27,8 @@ body {
 <h:body id="body" bgcolor="#ffffff">
     <h:panelGroup layout="block" rendered="#{applicationConfig.projectStage == 'Development'}"
         style="background-color: red; color: white; font-size: 1.2em; text-align: center; ">
-    Aplicação em desenvolvimento. Versão: ${applicationConfig.version} <br />
-        <a href="https://github.com/rafabene/demo_deltaspike/issues">Relate algum problema</a>
+    		This application is running under 'DEVELOPMENT' mode. Versão: ${applicationConfig.version} <br />
+        <a href="https://github.com/rafabene/demo_deltaspike/issues">Report any issues</a>
         <hr />
     </h:panelGroup>
     <h:link outcome="welcome.xhtml">
@@ -65,11 +65,11 @@ body {
 
     <br style="clear: both; padding-bottom: 10px;" />
     <hr />
-    #{label.configuracoes()}:
+    #{label.configuration()}:
     <br /> 
-    #{label.filaJMS()}: #{applicationConfig.filaJMS}
+    #{label.jmsQueue()}: #{applicationConfig.filaJMS}
     <br /> 
-    #{label.usuarioJMS()}: #{applicationConfig.usuarioJMS}
+    #{label.jmsUser()}: #{applicationConfig.usuarioJMS}
     
 
 

@@ -7,22 +7,22 @@
 		with actual data.
 	 -->
 <ui:composition template="/template.xhtml">
-    <ui:define name="pageHeader">Bem vindo ao microblog DeltaSpike</ui:define>
+    <ui:define name="pageHeader">Welcome to DeltaSpike microBlog</ui:define>
     <ui:define name="body">
         <form jsfc="h:form" id="Form">
             <h:panelGrid columns="3" id="RegisterGroupPanel">
-            #{label.usuario()}:
-            <h:inputText value="#{loginBean.usuario.username}" id="username" required="true" />
+            #{label.user()}:
+            <h:inputText value="#{loginBean.user.username}" id="username" required="true" />
                 <h:message for="username" />
-                <br /> #{label.senha()}:
-            <h:inputSecret value="#{loginBean.usuario.password}" id="password" converter="Char[]Converter" required="true" />
+                <br /> #{label.password()}:
+            <h:inputSecret value="#{loginBean.user.password}" id="password" converter="Char[]Converter" required="true" />
                 <h:message for="password" />
                 <br />
                 <h:commandButton action="#{loginBean.login()}" value="Login" />
                 <br />
                 <!-- O link abaixo poderia chamar a tela de criar usuário diretamente, mas foi usado desta maneira apenas 
             para demonstrar a funcionalidade -->
-                <h:commandLink action="#{loginBean.telaCriarUsuario()}" value="#{label.registrarUsuario()}" immediate="true" />
+                <h:commandLink action="#{loginBean.gotoCreateUserScreen()}" value="#{label.registerUser()}" immediate="true" />
             </h:panelGrid>
         </form>
     </ui:define>

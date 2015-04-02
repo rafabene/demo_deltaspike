@@ -1,33 +1,38 @@
 demo_deltaspike
 ================
 
-Projeto de demonstração sobre CDI Portable Extensions e DeltaSpike
+What is it?
+-----------
 
-Para executar:
+This is a demo project that shows a microblog implemented using DeltaSpike.
 
-Inicie o JBoss WildFly
+It doesn't have a fancy GUI but it tries to show an use for each feature of DeltaSpike.
+
+To run it:
+
+Start the  JBoss WildFly
 ----------------------
 
-1. Abra a linha de comando e navegue  até o diretório raiz do servidor.
-2. Às linhas a seguir mostram os comandos para executar o Wildfly:
+1. Open a command prompt and navigate to the root of the JBoss WildFly directory.
+2. The following shows the command line to start the server:
 
-        No Linux:   JBOSS_HOME/bin/standalone.sh
-        No Windows: JBOSS_HOME\bin\standalone.bat
-
-
-Build e Deploy da Demo
-----------------------
+        For Linux:   JBOSS_HOME/bin/standalone.sh
+        For Windows: JBOSS_HOME\bin\standalone.bat
 
 
-1. Tenha a certeza que de o servidor está iniciado como descrito acima.
-2. Abra a linha de comando e navegue até o diretório raizo desta demo.
-3. Digite o seguinte comando para fazer o build e deploy da demo:
+Build and Deploy the application
+--------------------------------
+
+
+1. Make sure you have started the JBoss WildFly server as described above.
+2. Open a command prompt and navigate to the root directory of this demo.
+3. Type this command to build and deploy the archive:
 
         mvn clean package wildfly:deploy
 
-4. Isto irá implantar o arquivo `/target/demo_deltaspike.war` no instância do servidor em execução.
+4. his will deploy `/target/demo_deltaspike.war` to the running instance of the server.
  
-Acesse a aplicação
--------------------
+Access the application 
+----------------------
 
-A aplicação estará sendo executada na seguinte URL: <http://localhost:8080/demo_deltaspike/>.
+The application will be running at the following URL: <http://localhost:8080/demo_deltaspike/>.

@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html">
+
+<!-- 
+		Replace path to template, title, header and body
+		with actual data.
+	 -->
+<ui:composition template="/template.xhtml">
+    <ui:define name="pageHeader">Users</ui:define>
+    <ui:define name="body">
+        <form jsfc="h:form" id="Form">
+            <h:dataTable value="#{followBean.listUsers()}" var="varUser" width="100%" border="1"
+                rendered="#{not empty followBean.listUsers()}">
+                <h:column>
+                    <f:facet name="header">
+                            #{label.user()}
+                        </f:facet>
+                        #{varUser.username}
+                </h:column>
+                <h:column headerClass="col2">
+                    <f:facet name="header">
+                            #{label.action()}
+                        </f:facet>
+                    <h:commandButton value="#{label.followUser()}"
+                        action="#{followBean.followUser(varUser)}" />
+                </h:column>
+
+            </h:dataTable>
+            <h:commandButton value="#{label.back()}" action="#{followBean.gotoPostMessage()}" />
+
+        </form>
+
+        <style type="text/css">
+.col2 {
+	width: 20%;
+}
+</style>
+    </ui:define>
+</ui:composition>
+
+</html>
