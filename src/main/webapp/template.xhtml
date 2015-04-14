@@ -4,6 +4,11 @@
 
 <h:head>
     <title>microBlog DeltaSpike</title>
+    <link rel="stylesheet" href="css/patternfly.css"/>
+    <link rel="stylesheet" href="css/font-awesome.css"/>
+    <script type="text/javascript" src="js/jquery-2.0.3.js"/>
+    <script type="text/javascript" src="js/bootstrap.js"/>
+    
     <style type="text/css">
 body {
 	font-family: Verdana, Arial, Helvetica, sans-serif;
@@ -25,6 +30,7 @@ body {
 </style>
 </h:head>
 <h:body id="body" bgcolor="#ffffff">
+<div class="container">
     <h:panelGroup layout="block" rendered="#{applicationConfig.projectStage == 'Development'}"
         style="background-color: red; color: white; font-size: 1.2em; text-align: center; ">
     		This application is running under 'DEVELOPMENT' mode. Versão: ${applicationConfig.version} <br />
@@ -34,7 +40,7 @@ body {
     <h:link outcome="welcome.xhtml">
         <img src="img/logo.png" style="width: 20em; display: inline;" />
     </h:link>
-    <table style="border: 1px solid #CAD6E0;" align="right" cellpadding="0" cellspacing="0" border="0" width="60%">
+    <table style="border: 1px solid #CAD6E0;" align="right" cellpadding="0" cellspacing="0" border="0" width="70%">
         <tbody>
             <tr>
                 <td class="header" height="42" align="center" valign="middle" width="100%" bgcolor="#E4EBEB"><ui:insert
@@ -72,7 +78,7 @@ body {
     #{label.jmsUser()}: #{applicationConfig.usuarioJMS}
     
 
-
+</div>
 </h:body>
 
 </html>

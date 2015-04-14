@@ -13,7 +13,7 @@ import com.rafabene.demos.deltaspike.domain.entities.User;
 public interface PostRepository extends EntityRepository<Post, Long> {
     
     
-    @Query("SELECT p FROM Post AS p WHERE p.author in (?1)")
+    @Query("SELECT p FROM Post AS p WHERE p.author in (?1) ORDER BY p.datetime DESC")
     public List<Post> findByFollowingUsers(List<User> followingUsers);
 
 }

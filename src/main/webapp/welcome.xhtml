@@ -9,21 +9,25 @@
 <ui:composition template="/template.xhtml">
     <ui:define name="pageHeader">Welcome to DeltaSpike microBlog</ui:define>
     <ui:define name="body">
-        <form jsfc="h:form" id="Form">
-            <h:panelGrid columns="3" id="RegisterGroupPanel">
-            #{label.user()}:
-            <h:inputText value="#{loginBean.user.username}" id="username" required="true" />
-                <h:message for="username" />
-                <br /> #{label.password()}:
-            <h:inputSecret value="#{loginBean.user.password}" id="password" converter="Char[]Converter" required="true" />
-                <h:message for="password" />
-                <br />
-                <h:commandButton action="#{loginBean.login()}" value="Login" />
-                <br />
-                <!-- O link abaixo poderia chamar a tela de criar usuário diretamente, mas foi usado desta maneira apenas 
-            para demonstrar a funcionalidade -->
-                <h:commandLink action="#{loginBean.gotoCreateUserScreen()}" value="#{label.registerUser()}" immediate="true" />
-            </h:panelGrid>
+        <form jsfc="h:form" id="Form" class="form-horizontal" style="padding: 2em;">
+        	<div class="form-group">
+        		<h:outputLabel for="username" value="#{label.user()}:" styleClass="col-sm-3 control-label" />
+         		<div class="col-sm-8">
+		            <h:inputText value="#{loginBean.user.username}" id="username" required="true" />
+        	        <h:message for="username" styleClass="help-block" style="color:red;"/>
+         		</div>
+        	</div>
+        	<div class="form-group">
+        		<h:outputLabel for="password" value="#{label.password()}:" styleClass="col-sm-3 control-label" />
+         		<div class="col-sm-8">
+            		<h:inputSecret value="#{loginBean.user.password}" id="password" converter="Char[]Converter" required="true" />
+                	<h:message for="password" styleClass="help-block" style="color:red;"/>
+         		</div>
+        	</div>
+            <h:commandButton action="#{loginBean.login()}" value="Login" styleClass="btn btn-default"/>
+            <br />
+            <!-- The link bellow could point to the xhtml directly, but it was used this way to show DeltaSpike feature -->
+            <h:commandLink action="#{loginBean.gotoCreateUserScreen()}" value="#{label.registerUser()}" immediate="true" />
         </form>
     </ui:define>
 </ui:composition>

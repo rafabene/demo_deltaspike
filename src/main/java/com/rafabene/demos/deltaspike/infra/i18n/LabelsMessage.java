@@ -55,4 +55,6 @@ public interface LabelsMessage {
     @MessageTemplate("{jms.user}")
     public String jmsUser();
     
+    public String createUser();
+    
 }

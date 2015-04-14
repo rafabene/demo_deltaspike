@@ -9,28 +9,36 @@
 		with actual data.
 	 -->
 <ui:composition template="/template.xhtml">
-    <ui:define name="pageHeader">Criar Usuário</ui:define>
+    <ui:define name="pageHeader">${label.createUser()}</ui:define>
     <ui:define name="body">
-        <h:form id="Form">
-            <h:panelGrid columns="3" id="RegisterGroupPanel">
-                ${label.user()}:
-                <h:inputText value="#{loginBean.user.username}" id="username" required="true"/>
-                <h:message for="username"/>
-                <br/> #{label.password()}:
-                <h:inputSecret value="#{loginBean.user.password}" id="password" converter="Char[]Converter"
-                               required="true">
-                    <f:validator validatorId="passwordConfirmValidator"/>
-                    <f:attribute name="confirmPassword" value="#{confirmPassword}"/>
-                </h:inputSecret>
-                <h:message for="password"/>
-                <br/> #{label.confirmPassword()}:
-                <h:inputSecret id="passwordConfirm" required="true" binding="#{confirmPassword}"/>
-                <h:message for="passwordConfirm"/>
-            </h:panelGrid>
-            <h:commandButton action="#{loginBean.registerUser()}" value="#{label.register()}"/>
-            <!-- O link abaixo poderia chamar a tela home diretamente, mas foi usado desta maneira apenas 
-            para demonstrar a funcionalidade -->
-            <h:commandButton action="#{loginBean.gotoWelcomeScreen()}" value="#{label.cancel()}" immediate="true"/>
+        <h:form id="Form" styleClass="form-horizontal" style="padding: 2em;">
+			<div class="form-group">
+         		<h:outputLabel for="username" value="${label.user()}:" styleClass="col-sm-3 control-label" />
+         		<div class="col-sm-8">
+	               <h:inputText value="#{loginBean.user.username}" id="username" required="true" />
+	               <h:message for="username" styleClass="help-block" style="color:red;"/>
+         		</div>
+        	</div>
+        	<div class="form-group">
+        		<h:outputLabel value="#{label.password()}:"  styleClass="col-sm-3 control-label"/>
+         		<div class="col-sm-8">
+	                <h:inputSecret value="#{loginBean.user.password}" id="password" converter="Char[]Converter" required="true">
+	                    <f:validator validatorId="passwordConfirmValidator"/>
+	                    <f:attribute name="confirmPassword" value="#{confirmPassword}"/>
+	                </h:inputSecret>
+	                <h:message for="password" styleClass="help-block" style="color:red;"/>
+	          	</div>
+        	</div>
+        	<div class="form-group">
+        		<h:outputLabel for="passwordConfirm" value="#{label.confirmPassword()}:"  styleClass="col-sm-3 control-label"/>
+         		<div class="col-sm-8">
+         			<h:inputSecret id="passwordConfirm" required="true" binding="#{confirmPassword}" />
+                	<h:message for="passwordConfirm" styleClass="help-block" style="color:red;"/>
+                </div>
+        	</div>
+            <h:commandButton action="#{loginBean.registerUser()}" value="#{label.register()}" styleClass="btn btn-default"/>
+            <!-- The action bellow could point to the xhtml directly, but it was used this way to show DeltaSpike feature -->
+            <h:commandButton action="#{loginBean.gotoWelcomeScreen()}" value="#{label.cancel()}" immediate="true" styleClass="btn btn-default"/>
         </h:form>
     </ui:define>
 </ui:composition>

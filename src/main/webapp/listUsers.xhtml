@@ -2,16 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
     xmlns:h="http://java.sun.com/jsf/html">
 
-<!-- 
-		Replace path to template, title, header and body
-		with actual data.
-	 -->
 <ui:composition template="/template.xhtml">
     <ui:define name="pageHeader">Users</ui:define>
     <ui:define name="body">
-        <form jsfc="h:form" id="Form">
+        <form jsfc="h:form" id="Form" styleClass="form-horizontal">
             <h:dataTable value="#{followBean.listUsers()}" var="varUser" width="100%" border="1"
-                rendered="#{not empty followBean.listUsers()}">
+                rendered="#{not empty followBean.listUsers()}" styleClass="table table-striped table-bordered table-hover">
                 <h:column>
                     <f:facet name="header">
                             #{label.user()}
@@ -23,11 +19,11 @@
                             #{label.action()}
                         </f:facet>
                     <h:commandButton value="#{label.followUser()}"
-                        action="#{followBean.followUser(varUser)}" />
+                        action="#{followBean.followUser(varUser)}" styleClass="btn btn-default btn-sm" />
                 </h:column>
 
             </h:dataTable>
-            <h:commandButton value="#{label.back()}" action="#{followBean.gotoPostMessage()}" />
+            <h:commandButton value="#{label.back()}" action="#{followBean.gotoPostMessage()}" styleClass="btn btn-default btn-sm"/>
 
         </form>
 
