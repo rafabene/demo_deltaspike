@@ -42,17 +42,17 @@ public class PropertyProducer
         }
     }
 
-//    @Produces
-//    @Property("key1")
-//    public String propriedade1Producer()
-//    {
-//        return propertiesFile.getProperty("key1");
-//    }
-//
-//    @Produces
-//    @Property("key2")
-//    public String propriedade2Producer()
-//    {
-//        return propertiesFile.getProperty("key2");
-//    }
+    @Produces
+    @Property("key1")
+    public String propriedade1Producer()
+    {
+        return propertiesFile.getProperty("key1");
+    }
+
+    @Produces
+    @Property("key2")
+    public String propriedade2Producer()
+    {
+        return propertiesFile.getProperty("key2");
+    }
 }
